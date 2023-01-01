@@ -13,6 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: mkdir -p artifact/screenshots
+    - run: touch artifact/screenshots/Download-screenshots
     - name: install puppeteer-headful
       uses: mujo-code/puppeteer-headful@master
       env:
