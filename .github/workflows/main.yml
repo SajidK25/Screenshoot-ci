@@ -24,3 +24,8 @@ jobs:
       with:
         path: screenshots
         name: Download-screenshots
+    - name: ImageMagick Action
+      uses: jruipinto/ImageMagick-action@v1
+      with:
+        # ImageMagick command to be executed
+        command: mogrify -path ./screenshots -auto-orient -resize 800x450 ./screenshots/*.*
