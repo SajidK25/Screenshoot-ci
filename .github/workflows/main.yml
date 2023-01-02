@@ -50,5 +50,5 @@ jobs:
       - name: Upload perspective artifacts
         uses: actions/upload-artifact@v2
         with:
-          path: screenshots
-          name: Download-screenshots
+          path: perspective_screenshots
+          name: perspective-Download-screenshots
