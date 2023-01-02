@@ -47,6 +47,10 @@ jobs:
            command: mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
           #command: mogrify -path /my-path -auto-orient -resize 800x450 /my-path/*.*
           # command:  mogrify -format png *.jpeg
+      - shell: bash
+        run: |
+          ls -al
+          pwd
       - name: Upload perspective artifacts
         uses: actions/upload-artifact@v2
         with:
