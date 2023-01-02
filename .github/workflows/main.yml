@@ -34,16 +34,17 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: Download-screenshots
-          path: downloads
+         # path: downloads
       - shell: bash
         run: |
-          ls -al downloads/
+          mkdir my-path
+          ls -al
       - name: ImageMagick Action
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
           # command: mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
-          command: mogrify -path /my-path -auto-orient -resize 800x450 *.jpeg
+          command: mogrify -path /my-path -auto-orient -resize 800x450 /my-path/*.*
           # command:  mogrify -format png *.jpeg
       - name: Upload perspective artifacts
         uses: actions/upload-artifact@v2
