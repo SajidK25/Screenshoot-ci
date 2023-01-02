@@ -34,9 +34,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: Download-screenshots
-      - shell: bash
-        run: |
-          unzip Download-screenshots.zip
+      # - shell: bash
+      #   run: |
+      #     unzip Download-screenshots.zip
       - name: ImageMagick Action
         uses: jruipinto/ImageMagick-action@v1
         with:
