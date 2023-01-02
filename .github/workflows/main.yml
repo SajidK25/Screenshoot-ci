@@ -39,6 +39,7 @@ jobs:
         run: |
           mkdir my-path
           ls -al
+          pwd
       - name: ImageMagick Action
         uses: jruipinto/ImageMagick-action@v1
         with:
