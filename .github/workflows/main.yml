@@ -44,13 +44,11 @@ jobs:
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
-           command: mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
+          # command: mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
           #command: mogrify -path /my-path -auto-orient -resize 800x450 /my-path/*.*
           # command:  mogrify -format png *.jpeg
-      - shell: bash
-        run: |
-          ls -al
-          pwd
+          command: bash -c  "pwd && uname -a && ls -al"
+  
       - name: Upload perspective artifacts
         uses: actions/upload-artifact@v2
         with:
