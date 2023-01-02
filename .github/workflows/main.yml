@@ -20,18 +20,28 @@ jobs:
       uses: flameddd/screenshots-ci-action@master
       with:
         url: ${{ github.event.inputs.url }}
-    # - name: ImageMagick Action
-    #   uses: jruipinto/ImageMagick-action@v1
-    #   with:
-    #     # ImageMagick command to be executed
-    #     command: mogrify -auto-orient -resize 800x450 *.*
     - uses: actions/upload-artifact@v2
       with:
         path: screenshots
         name: Download-screenshots
-    - name: ImageMagick Action
-      uses: jruipinto/ImageMagick-action@v1
-      with:
-        # ImageMagick command to be executed
-        # command: mogrify -path ./screenshots -auto-orient -resize 800x450 ./screenshots/*.*
-        command: mogrify -format jpg *.*
+
+  perspective:
+    name: Change image perspective
+    needs: screenshots
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download screenshots
+        uses: actions/download-artifact@v2
+        with:
+          name: Download-screenshots
+      - name: ImageMagick Action
+        uses: jruipinto/ImageMagick-action@v1
+        with:
+          # ImageMagick command to be executed
+          # command: mogrify -path ./screenshots -auto-orient -resize 800x450 ./screenshots/*.*
+          command:  mogrify -path ./screenshots -format png *.jpeg
+      - name: Upload perspective artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: perspective_screenshots
+          name: Download-perspective-screenshots
