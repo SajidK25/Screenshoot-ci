@@ -23,7 +23,7 @@ jobs:
         source: https://app.oxoa.ch/
         destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
         width: ${{ matrix.width }}
-        path: ./artifacts
+        # path: ./artifacts
     - name: ImageMagick Action
       uses: jruipinto/ImageMagick-action@v1
       with:

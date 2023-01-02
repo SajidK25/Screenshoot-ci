@@ -12,8 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: mkdir -p artifact/screenshots
-    - run: touch artifact/screenshots/Download-screenshots
     - name: install puppeteer-headful
       uses: mujo-code/puppeteer-headful@master
       env:
@@ -24,5 +22,5 @@ jobs:
         url: ${{ github.event.inputs.url }}
     - uses: actions/upload-artifact@v2
       with:
-        path: artifact/screenshots/Download-screenshots
+        path: screenshots
         name: Download-screenshots
