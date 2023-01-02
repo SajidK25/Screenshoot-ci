@@ -35,14 +35,14 @@ jobs:
         with:
           name: Download-screenshots
           path: downloads
-      # - shell: bash
-      #   run: |
-      #     unzip Download-screenshots.zip
+      - shell: bash
+        run: |
+          ls -al
       - name: ImageMagick Action
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
-          command: mogrify -path /home/runner/work/Screenshoot-ci/Screenshoot-ci/downloads -auto-orient -resize 800x450 *.*
+          command: mogrify -path ./downloads -auto-orient -resize 800x450 *.*
           # command:  mogrify -format png *.jpeg
       - name: Upload perspective artifacts
         uses: actions/upload-artifact@v2
