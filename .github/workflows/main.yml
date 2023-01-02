@@ -41,7 +41,7 @@ jobs:
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
-          command: mogrify -path ./ -auto-orient -resize 800x450 *.*
+          command: mogrify -path . -auto-orient -resize 800x450 *.jpeg
           # command:  mogrify -format png *.jpeg
       - name: Upload perspective artifacts
         uses: actions/upload-artifact@v2
