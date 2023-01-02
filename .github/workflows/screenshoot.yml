@@ -2,9 +2,9 @@ name: screenshot
 on:
   push:
     # branches: ["main", "preview", "dev"]
-    branches: ["main"]
+    branches: ["master"]
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
 
 jobs:
   screenshot:
