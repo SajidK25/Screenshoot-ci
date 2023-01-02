@@ -24,3 +24,8 @@ jobs:
         destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
         width: ${{ matrix.width }}
         path: ./artifacts
+    - name: ImageMagick Action
+      uses: jruipinto/ImageMagick-action@v1
+      with:
+        # ImageMagick command to be executed
+        command: mogrify -path ./artifacts -auto-orient -resize 800x450 ./artifacts/*.*
