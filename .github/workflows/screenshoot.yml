@@ -23,4 +23,4 @@ jobs:
         source: https://app.oxoa.ch/
         destination: screenshot-${{ matrix.os }}-${{ matrix.width }}.png
         width: ${{ matrix.width }}
-        path: ./artifact
+        path: ./artifacts
