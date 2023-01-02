@@ -20,12 +20,17 @@ jobs:
       uses: flameddd/screenshots-ci-action@master
       with:
         url: ${{ github.event.inputs.url }}
-    - uses: actions/upload-artifact@v2
-      with:
-        path: screenshots
-        name: Download-screenshots
     - name: ImageMagick Action
       uses: jruipinto/ImageMagick-action@v1
       with:
         # ImageMagick command to be executed
-        command: mogrify -path ./screenshots -auto-orient -resize 800x450 ./screenshots/*.*
+        command: mogrify -path -auto-orient -resize 800x450 *.*
+    - uses: actions/upload-artifact@v2
+      with:
+        path: screenshots
+        name: Download-screenshots
+    # - name: ImageMagick Action
+    #   uses: jruipinto/ImageMagick-action@v1
+    #   with:
+    #     # ImageMagick command to be executed
+    #     command: mogrify -path ./screenshots -auto-orient -resize 800x450 ./screenshots/*.*
