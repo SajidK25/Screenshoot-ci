@@ -28,4 +28,4 @@ jobs:
       uses: jruipinto/ImageMagick-action@v1
       with:
         # ImageMagick command to be executed
-        command: mogrify -path ./screenshots -auto-orient -resize 800x450 ./screenshots/*.*
+        command: mogrify -path /screenshots -auto-orient -resize 800x450 /screenshots/*.*
