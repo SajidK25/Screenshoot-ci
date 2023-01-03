@@ -22,7 +22,7 @@ jobs:
         url: ${{ github.event.inputs.url }}
     - shell: bash
       run: |
-        mogrify -path . -auto-orient -resize 800x450 *.jpeg
+        mogrify -path . -auto-orient -resize 800x450 *.*
     - uses: actions/upload-artifact@v2
       with:
         path: screenshots
