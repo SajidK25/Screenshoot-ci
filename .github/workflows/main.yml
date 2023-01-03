@@ -28,30 +28,30 @@ jobs:
         path: screenshots
         name: Download-screenshots
 
-  perspective:
-    name: Change image perspective
-    needs: screenshots
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download screenshots
-        uses: actions/download-artifact@v2
-        with:
-          name: Download-screenshots
-          path: downloads
-      - shell: bash
-        run: |
-          mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
-      # - name: ImageMagick Action
-      #   uses: jruipinto/ImageMagick-action@v1
-      #   with:
-          # ImageMagick command to be executed
-          # command: mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
-          #command: mogrify -path /my-path -auto-orient -resize 800x450 /my-path/*.*
-          # command:  mogrify -format png *.jpeg
-          # command: bash -c  "pwd && uname -a && ls -al"
+  # perspective:
+  #   name: Change image perspective
+  #   needs: screenshots
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Download screenshots
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: Download-screenshots
+  #         path: downloads
+  #     - shell: bash
+  #       run: |
+  #         mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
+  #     # - name: ImageMagick Action
+  #     #   uses: jruipinto/ImageMagick-action@v1
+  #     #   with:
+  #         # ImageMagick command to be executed
+  #         # command: mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
+  #         #command: mogrify -path /my-path -auto-orient -resize 800x450 /my-path/*.*
+  #         # command:  mogrify -format png *.jpeg
+  #         # command: bash -c  "pwd && uname -a && ls -al"
   
-      - name: Upload perspective artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          path: perspective_screenshots
-          name: perspective-Download-screenshots
+  #     - name: Upload perspective artifacts
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         path: perspective_screenshots
+  #         name: perspective-Download-screenshots
