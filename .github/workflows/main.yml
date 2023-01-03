@@ -37,9 +37,6 @@ jobs:
           path: downloads
       - shell: bash
         run: |
-          ls -al
-          pwd
-          sudo apt install imagemagick -y
           mogrify -path ./downloads -auto-orient -resize 800x450 ./downloads/*.jpeg
       # - name: ImageMagick Action
       #   uses: jruipinto/ImageMagick-action@v1
