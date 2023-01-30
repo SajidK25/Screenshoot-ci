@@ -24,7 +24,7 @@ jobs:
       
     - name: Login and Screenshot
       run: |
-        #!/usr/bin/env python
+        python << EOF
         import os
         from selenium import webdriver
         from selenium.webdriver.chrome.options import Options
@@ -55,6 +55,8 @@ jobs:
         matrix = cv2.getPerspectiveTransform(pts1,pts2)
         result = cv2.warpPerspective(img, matrix, (300,300))
         cv2.imwrite("perspective_transform.png", result)
+        
+        EOF
         
     - name: Upload screenshot and transformed image
       uses: actions/upload-artifact@v2
