@@ -1,0 +1,64 @@
+name: Login and Screenshot
+
+on: [push]
+
+env:
+  USERNAME: ${{ secrets.USERNAME }}
+  PASSWORD: ${{ secrets.PASSWORD }}
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser
+        sudo apt-get install -y python3-pip
+        pip3 install selenium
+        pip3 install opencv-python
+      
+    - name: Login and Screenshot
+      run: |
+        import os
+        from selenium import webdriver
+        from selenium.webdriver.chrome.options import Options
+        import cv2
+        import numpy as np
+        
+        # Set up the webdriver
+        options = Options()
+        options.headless = True
+        driver = webdriver.Chrome(options=options)
+        
+        # Log in to the page
+        driver.get("https://your-webpage.com/login")
+        username = driver.find_element_by_name("username")
+        password = driver.find_element_by_name("password")
+        username.send_keys(os.environ["USERNAME"])
+        password.send_keys(os.environ["PASSWORD"])
+        driver.find_element_by_xpath("//button[text()='Sign In']").click()
+        
+        # Take a screenshot of the page
+        driver.save_screenshot("screenshot.png")
+        driver.quit()
+        
+        # Perform perspective transform on the screenshot
+        img = cv2.imread("screenshot.png")
+        pts1 = np.float32([[56,65],[368,52],[28,387],[389,390]])
+        pts2 = np.float32([[0,0],[300,0],[0,300],[300,300]])
+        matrix = cv2.getPerspectiveTransform(pts1,pts2)
+        result = cv2.warpPerspective(img, matrix, (300,300))
+        cv2.imwrite("perspective_transform.png", result)
+        
+    - name: Upload screenshot and transformed image
+      uses: actions/upload-artifact@v2
+      with:
+        name: Screenshot and Transform
+        path: |
+          screenshot.png
+          perspective_transform.png
