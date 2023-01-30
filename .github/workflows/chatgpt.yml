@@ -36,7 +36,7 @@ jobs:
         driver = webdriver.Chrome(options=options)
         
         # Log in to the page
-        driver.get("https://your-webpage.com/login")
+        driver.get("https://99coding.club/wp-admin/")
         username = driver.find_element_by_name("log")
         password = driver.find_element_by_name("pwd")
         username.send_keys(os.environ["USERNAME"])
