@@ -37,10 +37,10 @@ jobs:
         
         # Log in to the page
         driver.get("https://99coding.club/wp-admin/")
-        username = driver.find_element_by_name("log")
-        password = driver.find_element_by_name("pwd")
-        username.send_keys(os.environ["USERNAME"])
-        password.send_keys(os.environ["PASSWORD"])
+        #username = driver.find_element_by_name("log")
+        #password = driver.find_element_by_name("pwd")
+        #username.send_keys(os.environ["USERNAME"])
+        #password.send_keys(os.environ["PASSWORD"])
         driver.find_element_by_xpath("//button[text()='Log In']").click()
         
         # Take a screenshot of the page
