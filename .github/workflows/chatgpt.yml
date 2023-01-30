@@ -42,7 +42,7 @@ jobs:
         #password = driver.find_element_by_name("pwd")
         #username.send_keys(os.environ["USERNAME"])
         #password.send_keys(os.environ["PASSWORD"])
-        driver.find_element_by_xpath("//button[text()='Log In']").click()
+        #driver.find_element_by_xpath("//button[text()='Log In']").click()
         
         # Take a screenshot of the page
         driver.save_screenshot("screenshot.png")
